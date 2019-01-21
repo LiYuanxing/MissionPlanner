@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,7 +70,10 @@ namespace MissionPlanner
         public event EventHandler CommsClose;
 
         public static byte gcssysid { get; set; } = 255;
-
+        /********add by lsy***************/
+        private byte[] passwd = { 1, 2, 3, 4, 5 };
+        private bool encryption_switch = true;
+        /**********************************/
         /// <summary>
         /// used to prevent comport access for exclusive use
         /// </summary>
@@ -853,6 +856,18 @@ Please check the following
                     }
                 }
 
+                /********add by lsy***************/
+                //byte passwd =new byte;
+                for (int en_i = 0; en_i < i; en_i++)
+                {
+                    if (!encryption_switch)
+                        break;
+                    for (int en_j = 0; en_j < passwd.Length; en_j++)
+                    {
+                        packet[en_i] = (byte)(packet[en_i] ^ passwd[en_j]);
+                    }
+                }
+                /***********/
                 if (BaseStream.IsOpen)
                 {
                     BaseStream.Write(packet, 0, i);
@@ -3368,6 +3383,18 @@ Please check the following
                             if (BaseStream.IsOpen)
                             {
                                 BaseStream.Read(buffer, count, 1);
+                                /********add by lsy***************/
+                                int en_i = count;
+                                if (encryption_switch)
+                                {
+                                    for (int en_j = 0; en_j < passwd.Length; en_j++)
+                                    {
+                                        buffer[en_i] = (byte)(buffer[en_i] ^ passwd[en_j]);
+                                    }
+                        
+                                } 
+
+                                /***********/
                                 if (rawlogfile != null && rawlogfile.CanWrite)
                                     rawlogfile.WriteByte(buffer[count]);
                             }
@@ -3442,6 +3469,17 @@ Please check the following
                             }
 
                             int read = BaseStream.Read(buffer, 1, headerlength);
+                            /********add by lsy***************/
+                             for (int en_i = 1; en_i < read+1; en_i++)
+                            {
+                                if (!encryption_switch)
+                                    break;
+                                for (int en_j = 0; en_j < passwd.Length; en_j++)
+                                {
+                                    buffer[en_i] = (byte)(buffer[en_i] ^ passwd[en_j]);
+                                }
+                            }
+                            /***********/
                             count = read;
                             if (rawlogfile != null && rawlogfile.CanWrite)
                                 rawlogfile.Write(buffer, 1, read);
@@ -3489,6 +3527,17 @@ Please check the following
                                     if (BaseStream.IsOpen)
                                     {
                                         int read = BaseStream.Read(buffer, headerlengthstx, length - (headerlengthstx));
+                                        /********add by lsy***************/
+                                        for (int en_i = headerlengthstx; en_i < read+ headerlengthstx; en_i++)
+                                        {
+                                            if (!encryption_switch)
+                                                break;
+                                            for (int en_j = 0; en_j < passwd.Length; en_j++)
+                                            {
+                                                buffer[en_i] = (byte)(buffer[en_i] ^ passwd[en_j]);
+                                            }
+                                        }
+                                        /***********/
                                         if (read != (length - headerlengthstx))
                                             log.InfoFormat("MAVLINK: bad read {0}, {1}, {2}", headerlengthstx, length,
                                                 count);
