@@ -404,7 +404,7 @@ namespace MissionPlanner
         /// </summary>
         public GCSViews.FlightData FlightData;
 
-        public GCSViews.User_Login User_Login = new GCSViews.User_Login();
+        //public GCSViews.User_Login User_Login = new GCSViews.User_Login();
 
         public GCSViews.FlightPlanner FlightPlanner;
         Controls.SITL Simulation;
@@ -437,9 +437,9 @@ namespace MissionPlanner
 
             autoHideToolStripMenuItem.Visible = !DisplayConfiguration.autoHideMenuForce;
 
-            if (MainV2.instance.User_Login != null)
+            if (MainV2.instance.FlightData != null)
             {
-                MainV2.instance.User_Login.Activate();
+                MainV2.instance.FlightData.Activate();
             }
             ////Flight data page
             //if (MainV2.instance.FlightData != null)
@@ -1275,10 +1275,10 @@ namespace MissionPlanner
             _connectionControl.CMB_serialport.Items.Add("UDPCl");
         }
 
-        private void User_Login_Click(object sender, EventArgs e)
-        {
-            MyView.ShowScreen("User_Login");
-        }
+        //private void User_Login_Click(object sender, EventArgs e)
+        //{
+        //    MyView.ShowScreen("User_Login");
+        //}
 
         private void MenuFlightData_Click(object sender, EventArgs e)
         {
@@ -2844,7 +2844,7 @@ namespace MissionPlanner
             {
             }
 
-            MyView.AddScreen(new MainSwitcher.Screen("User_Login", typeof(GCSViews.User_Login), true));
+            //MyView.AddScreen(new MainSwitcher.Screen("User_Login", typeof(GCSViews.User_Login), true));
             MyView.AddScreen(new MainSwitcher.Screen("FlightData", FlightData, true));
             MyView.AddScreen(new MainSwitcher.Screen("FlightPlanner", FlightPlanner, true));
             MyView.AddScreen(new MainSwitcher.Screen("HWConfig", typeof(GCSViews.InitialSetup), false));
@@ -2878,17 +2878,17 @@ namespace MissionPlanner
             }
             else
             {
-                //this.PerformLayout();
-                //log.Info("show FlightData");
-                //MenuFlightData_Click(this, e);
-                //log.Info("show FlightData... Done");
-                //MainMenu_ItemClicked(this, new ToolStripItemClickedEventArgs(MenuFlightData));
-
                 this.PerformLayout();
-                log.Info("show Login_Click");
-                User_Login_Click(this, e);
-                log.Info("show Login_Click... Done");
+                log.Info("show FlightData");
+                MenuFlightData_Click(this, e);
+                log.Info("show FlightData... Done");
                 MainMenu_ItemClicked(this, new ToolStripItemClickedEventArgs(MenuFlightData));
+
+                //this.PerformLayout();
+                //log.Info("show Login_Click");
+                //User_Login_Click(this, e);
+                //log.Info("show Login_Click... Done");
+                //MainMenu_ItemClicked(this, new ToolStripItemClickedEventArgs(MenuFlightData));
             }
 
             // for long running tasks using own threads.

@@ -19,7 +19,7 @@
     <EnableDefaultItems>false</EnableDefaultItems>
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyName>UESTC_GCS</AssemblyName>
+    <AssemblyName>无线创新GCS</AssemblyName>
     <RootNamespace>MissionPlanner</RootNamespace>
  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -708,7 +708,10 @@
     <EmbeddedResource Include="OpenGLtest2.resx"><DependentUpon>OpenGLtest2.cs</DependentUpon> </EmbeddedResource>
     <EmbeddedResource Include="OSDVideo.resx"><DependentUpon>OSDVideo.cs</DependentUpon> </EmbeddedResource>
     <EmbeddedResource Include="paramcompare.resx"><DependentUpon>paramcompare.cs</DependentUpon> </EmbeddedResource>
-    <EmbeddedResource Include="pips_sensor.resx" />
+    <EmbeddedResource Include="pips_sensor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>pips_sensor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -2140,6 +2143,11 @@
 
 
   <ItemGroup>
+    <Compile Update="pips_sensor.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>pips_sensor.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
