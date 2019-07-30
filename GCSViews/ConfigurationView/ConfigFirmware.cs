@@ -32,7 +32,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
         public void Activate()
         {
-            if (firstrun)
+            if (firstrun && false)
             {
                 UpdateFWList();
                 firstrun = false;
@@ -49,10 +49,10 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
             if (MainV2.DisplayConfiguration.isAdvancedMode)
             {
-                lbl_devfw.Visible = true;
+                //lbl_devfw.Visible = true;
                 lbl_Custom_firmware_label.Visible = true;
                 lbl_dlfw.Visible = true;
-                CMB_history_label.Visible = true;
+                //CMB_history_label.Visible = true;
             }
             else
             {
@@ -435,13 +435,22 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
         private void lbl_dlfw_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    Process.Start("http://firmware.ardupilot.org/");
+            //}
+            //catch
+            //{
+            //    CustomMessageBox.Show("Can not open url http://firmware.ardupilot.org/", Strings.ERROR);
+            //}
+
             try
             {
-                Process.Start("http://firmware.ardupilot.org/");
+                Process.Start("https://shop207554123.taobao.com/shop/view_shop.htm?spm=a230r.1.14.10.18001b93b1RmZf&user_number_id=4035213606");
             }
             catch
             {
-                CustomMessageBox.Show("Can not open url http://firmware.ardupilot.org/", Strings.ERROR);
+                CustomMessageBox.Show("Can not open url https://shop207554123.taobao.com/shop/view_shop.htm?spm=a230r.1.14.10.18001b93b1RmZf&user_number_id=4035213606", Strings.ERROR);
             }
         }
 

@@ -244,6 +244,11 @@ namespace MissionPlanner
             // 
             // picture
             // 
+            this.picture.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.picture.AutoToolTip = true;
+            this.picture.BackColor = System.Drawing.Color.Transparent;
+            this.picture.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.picture.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             resources.ApplyResources(this.picture, "picture");
             this.picture.Margin = new System.Windows.Forms.Padding(100, 0, 0, 0);
             this.picture.Name = "picture";

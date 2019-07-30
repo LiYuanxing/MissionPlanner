@@ -548,6 +548,9 @@ namespace MissionPlanner
 
         public MainV2()
         {
+            int win2 = NativeMethods.FindWindow("ConsoleWindowClass", null);
+            NativeMethods.ShowWindow(win2, NativeMethods.SW_HIDE); // hide window
+
             log.Info("Mainv2 ctor");
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);

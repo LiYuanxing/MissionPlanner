@@ -67,6 +67,7 @@ namespace MissionPlanner
             Thread = Thread.CurrentThread;
 
             System.Windows.Forms.Application.EnableVisualStyles();
+
             XmlConfigurator.Configure();
             log.Info("******************* Logging Configured *******************");
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);

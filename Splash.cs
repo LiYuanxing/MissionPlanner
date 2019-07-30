@@ -25,5 +25,10 @@ namespace MissionPlanner
                 pictureBox1.Visible = true;
             }
         }
+
+        private void Splash_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
