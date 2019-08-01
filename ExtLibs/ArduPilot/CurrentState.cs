@@ -62,6 +62,9 @@ namespace MissionPlanner
         [DisplayText("cmd96")]
         public int cmd96 = 0;
 
+        [DisplayText("cmdliuliang")]
+        public int cmdliuliang = 0;
+
         [DisplayText("last_count")]
         public int last_count = 0;
 
@@ -2591,21 +2594,32 @@ namespace MissionPlanner
                                 pips_now[i + count * 96] = data96.data[i];
                             }
 
-                            if (last_count != data96.data[80])
-                            {
-                                last_count = data96.data[80];
-                                Array.Copy(pips_now, 0, pips_last, 0, 1024);
-                                f1024 = 1;
-                            }
+                            //if (last_count != data96.data[80])
+                            //{
+                            //    last_count = data96.data[80];
+                            //    Array.Copy(pips_now, 0, pips_last, 0, 1024);
+                            //    f1024 = 1;
+                            //}
+
+                           Array.Copy(pips_now, 0, pips_last, 0, 1024);
+                           f1024 = 1;
                         }
 
                         if (data96.type == 1 && last_cmd_count != data96.data[80] && cmd96 ==0)
                         {
+                            Array.Clear(cmd_callback,0,96);
                             Array.Copy(data96.data, 0, cmd_callback, 0, data96.len);
                             cmd96 = 1;
                             last_cmd_count = data96.data[80];
                         }
-                        
+
+                        if (data96.type == 2 && last_cmd_count != data96.data[80] && cmdliuliang == 0)
+                        {
+                            Array.Clear(cmd_callback, 0, 96);
+                            Array.Copy(data96.data, 0, cmd_callback, 0, data96.len);
+                            cmdliuliang = 1;
+                            last_cmd_count = data96.data[80];
+                        }
                     }
                     //UESTC End
 

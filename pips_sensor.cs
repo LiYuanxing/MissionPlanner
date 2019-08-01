@@ -263,6 +263,15 @@ namespace MissionPlanner
                 textBox1.AppendText(rx_count + ".RX:" + System.Text.Encoding.ASCII.GetString(MainV2.comPort.MAV.cs.cmd_callback));
                 textBox1.AppendText("\r\n");
             }
+
+            if (MainV2.comPort.MAV.cs.cmdliuliang == 1)
+            {
+                MainV2.comPort.MAV.cs.cmdliuliang = 0;
+                label1.Text = "流量：" + System.Text.Encoding.ASCII.GetString(MainV2.comPort.MAV.cs.cmd_callback);
+                rx_count++;
+                textBox1.AppendText(rx_count + ".RX:" + System.Text.Encoding.ASCII.GetString(MainV2.comPort.MAV.cs.cmd_callback));
+                textBox1.AppendText("\r\n");
+            }
         }
 
         private void myButton2_Click(object sender, EventArgs e)
@@ -487,24 +496,21 @@ namespace MissionPlanner
             data96.data[count] = (byte)'#'; count++;
             data96.data[count] = (byte)'D'; count++;
 
-            int time = comboBox4.SelectedIndex * 5 + 5;
-            byte time_b = 0;
+            if (comboBox4.SelectedIndex == 0)
+            {
+                data96.data[count] = (byte)(5 + 0x30); count++;
+            }
+            else if (comboBox4.SelectedIndex == 1 ||
+                     comboBox4.SelectedIndex == 2 ||
+                     comboBox4.SelectedIndex == 3 ||
+                     comboBox4.SelectedIndex == 4 ||
+                     comboBox4.SelectedIndex == 5)
+            {
+                data96.data[count] = (byte)(comboBox4.SelectedIndex + 0x30); count++;
+                data96.data[count] = (byte)(0 + 0x30); count++;
+            }
+            
 
-            time_b = (byte)((time % 1000) / 100);
-            if (time_b != 0)
-            {
-                data96.data[count] = (byte)(time_b + 0x30); count++;
-            }
-            time_b = (byte)((time % 100) / 10);
-            if (time_b != 0)
-            {
-                data96.data[count] = (byte)(time_b + 0x30); count++;
-            }
-            time_b = (byte)((time % 10) / 1);
-            if (time_b != 0)
-            {
-                data96.data[count] = (byte)(time_b + 0x30); count++;
-            }
             data96.data[count] = (byte)'\n'; count++;
 
             data96.type = 110;

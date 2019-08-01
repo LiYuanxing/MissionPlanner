@@ -60,6 +60,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -67,10 +68,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(874, 22);
+            this.textBox1.Location = new System.Drawing.Point(1095, 22);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(347, 73);
+            this.textBox1.Size = new System.Drawing.Size(237, 73);
             this.textBox1.TabIndex = 38;
             // 
             // BUT_savecsv2
@@ -342,24 +343,10 @@
             this.comboBox4.Items.AddRange(new object[] {
             "0.5",
             "1.0",
-            "1.5",
             "2.0",
-            "2.5",
             "3.0",
-            "3.5",
             "4.0",
-            "4.5",
-            "5.0",
-            "5.5",
-            "6.0",
-            "6.5",
-            "7.0",
-            "7.5",
-            "8.0",
-            "8.5",
-            "9.0",
-            "9.5",
-            "10"});
+            "5.0"});
             this.comboBox4.Location = new System.Drawing.Point(207, 6);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(65, 24);
@@ -443,16 +430,27 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1253, 71);
+            this.tabPage2.Size = new System.Drawing.Size(712, 71);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "气体流量探测系统";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(874, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "流量：";
             // 
             // pips_sensor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 649);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.zg2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.myButton10);
@@ -504,5 +502,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label1;
     }
 }

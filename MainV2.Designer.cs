@@ -5,7 +5,7 @@ namespace MissionPlanner
 {
     partial class MainV2
     {
-       public static bool passed = false;
+       public static bool passed = true;
         /// <summary>
         /// Required designer variable.
         /// </summary>
