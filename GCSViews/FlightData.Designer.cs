@@ -46,20 +46,17 @@
             this.CMB_mountmode = new System.Windows.Forms.ComboBox();
             this.BUT_mountmode = new MissionPlanner.Controls.MyButton();
             this.BUT_ARM = new MissionPlanner.Controls.MyButton();
-            this.BUT_joystick = new MissionPlanner.Controls.MyButton();
-            this.BUT_quickmanual = new MissionPlanner.Controls.MyButton();
-            this.BUT_quickrtl = new MissionPlanner.Controls.MyButton();
-            this.BUT_quickauto = new MissionPlanner.Controls.MyButton();
             this.CMB_setwp = new System.Windows.Forms.ComboBox();
             this.BUT_setwp = new MissionPlanner.Controls.MyButton();
             this.CMB_modes = new System.Windows.Forms.ComboBox();
             this.BUT_setmode = new MissionPlanner.Controls.MyButton();
             this.BUT_clear_track = new MissionPlanner.Controls.MyButton();
             this.CMB_action = new System.Windows.Forms.ComboBox();
-            this.BUT_Homealt = new MissionPlanner.Controls.MyButton();
-            this.BUT_RAWSensor = new MissionPlanner.Controls.MyButton();
-            this.BUTrestartmission = new MissionPlanner.Controls.MyButton();
             this.BUTactiondo = new MissionPlanner.Controls.MyButton();
+            this.tabActionsSimple = new System.Windows.Forms.TabPage();
+            this.myButton1 = new MissionPlanner.Controls.MyButton();
+            this.myButton2 = new MissionPlanner.Controls.MyButton();
+            this.myButton3 = new MissionPlanner.Controls.MyButton();
             this.tabPagePreFlight = new System.Windows.Forms.TabPage();
             this.tabGauges = new System.Windows.Forms.TabPage();
             this.Gvspeed = new AGaugeApp.AGauge();
@@ -163,10 +160,12 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
-            this.myButton3 = new MissionPlanner.Controls.MyButton();
-            this.myButton2 = new MissionPlanner.Controls.MyButton();
-            this.myButton1 = new MissionPlanner.Controls.MyButton();
-            this.tabActionsSimple = new System.Windows.Forms.TabPage();
+            this.myButton5 = new MissionPlanner.Controls.MyButton();
+            this.myButton6 = new MissionPlanner.Controls.MyButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.BUT_joystick = new MissionPlanner.Controls.MyButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetSpeed = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetAlt = new MissionPlanner.Controls.ModifyandSet();
@@ -199,6 +198,7 @@
             this.contextMenuStripQuickView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceQuickTab)).BeginInit();
             this.tabActions.SuspendLayout();
+            this.tabActionsSimple.SuspendLayout();
             this.tabPagePreFlight.SuspendLayout();
             this.tabGauges.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGaugesTab)).BeginInit();
@@ -230,7 +230,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
-            this.tabActionsSimple.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainH
@@ -593,6 +592,10 @@
             // 
             // tabActions
             // 
+            this.tabActions.Controls.Add(this.textBox1);
+            this.tabActions.Controls.Add(this.label7);
+            this.tabActions.Controls.Add(this.myButton6);
+            this.tabActions.Controls.Add(this.myButton5);
             this.tabActions.Controls.Add(this.myButton4);
             this.tabActions.Controls.Add(this.modifyandSetLoiterRad);
             this.tabActions.Controls.Add(this.BUT_abortland);
@@ -601,18 +604,12 @@
             this.tabActions.Controls.Add(this.BUT_mountmode);
             this.tabActions.Controls.Add(this.BUT_ARM);
             this.tabActions.Controls.Add(this.BUT_joystick);
-            this.tabActions.Controls.Add(this.BUT_quickmanual);
-            this.tabActions.Controls.Add(this.BUT_quickrtl);
-            this.tabActions.Controls.Add(this.BUT_quickauto);
             this.tabActions.Controls.Add(this.CMB_setwp);
             this.tabActions.Controls.Add(this.BUT_setwp);
             this.tabActions.Controls.Add(this.CMB_modes);
             this.tabActions.Controls.Add(this.BUT_setmode);
             this.tabActions.Controls.Add(this.BUT_clear_track);
             this.tabActions.Controls.Add(this.CMB_action);
-            this.tabActions.Controls.Add(this.BUT_Homealt);
-            this.tabActions.Controls.Add(this.BUT_RAWSensor);
-            this.tabActions.Controls.Add(this.BUTrestartmission);
             this.tabActions.Controls.Add(this.BUTactiondo);
             this.tabActions.Controls.Add(this.modifyandSetSpeed);
             this.tabActions.Controls.Add(this.modifyandSetAlt);
@@ -681,50 +678,6 @@
             this.BUT_ARM.UseVisualStyleBackColor = true;
             this.BUT_ARM.Click += new System.EventHandler(this.BUT_ARM_Click);
             // 
-            // BUT_joystick
-            // 
-            this.BUT_joystick.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUT_joystick.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUT_joystick.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUT_joystick, "BUT_joystick");
-            this.BUT_joystick.Name = "BUT_joystick";
-            this.toolTip1.SetToolTip(this.BUT_joystick, resources.GetString("BUT_joystick.ToolTip"));
-            this.BUT_joystick.UseVisualStyleBackColor = true;
-            this.BUT_joystick.Click += new System.EventHandler(this.BUT_joystick_Click);
-            // 
-            // BUT_quickmanual
-            // 
-            this.BUT_quickmanual.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUT_quickmanual.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUT_quickmanual.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUT_quickmanual, "BUT_quickmanual");
-            this.BUT_quickmanual.Name = "BUT_quickmanual";
-            this.toolTip1.SetToolTip(this.BUT_quickmanual, resources.GetString("BUT_quickmanual.ToolTip"));
-            this.BUT_quickmanual.UseVisualStyleBackColor = true;
-            this.BUT_quickmanual.Click += new System.EventHandler(this.BUT_quickmanual_Click);
-            // 
-            // BUT_quickrtl
-            // 
-            this.BUT_quickrtl.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUT_quickrtl.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUT_quickrtl.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUT_quickrtl, "BUT_quickrtl");
-            this.BUT_quickrtl.Name = "BUT_quickrtl";
-            this.toolTip1.SetToolTip(this.BUT_quickrtl, resources.GetString("BUT_quickrtl.ToolTip"));
-            this.BUT_quickrtl.UseVisualStyleBackColor = true;
-            this.BUT_quickrtl.Click += new System.EventHandler(this.BUT_quickrtl_Click);
-            // 
-            // BUT_quickauto
-            // 
-            this.BUT_quickauto.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUT_quickauto.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUT_quickauto.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUT_quickauto, "BUT_quickauto");
-            this.BUT_quickauto.Name = "BUT_quickauto";
-            this.toolTip1.SetToolTip(this.BUT_quickauto, resources.GetString("BUT_quickauto.ToolTip"));
-            this.BUT_quickauto.UseVisualStyleBackColor = true;
-            this.BUT_quickauto.Click += new System.EventHandler(this.BUT_quickauto_Click);
-            // 
             // CMB_setwp
             // 
             this.CMB_setwp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -784,39 +737,6 @@
             resources.ApplyResources(this.CMB_action, "CMB_action");
             this.CMB_action.Name = "CMB_action";
             // 
-            // BUT_Homealt
-            // 
-            this.BUT_Homealt.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUT_Homealt.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUT_Homealt.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUT_Homealt, "BUT_Homealt");
-            this.BUT_Homealt.Name = "BUT_Homealt";
-            this.toolTip1.SetToolTip(this.BUT_Homealt, resources.GetString("BUT_Homealt.ToolTip"));
-            this.BUT_Homealt.UseVisualStyleBackColor = true;
-            this.BUT_Homealt.Click += new System.EventHandler(this.BUT_Homealt_Click);
-            // 
-            // BUT_RAWSensor
-            // 
-            this.BUT_RAWSensor.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUT_RAWSensor.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUT_RAWSensor.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUT_RAWSensor, "BUT_RAWSensor");
-            this.BUT_RAWSensor.Name = "BUT_RAWSensor";
-            this.toolTip1.SetToolTip(this.BUT_RAWSensor, resources.GetString("BUT_RAWSensor.ToolTip"));
-            this.BUT_RAWSensor.UseVisualStyleBackColor = true;
-            this.BUT_RAWSensor.Click += new System.EventHandler(this.BUT_RAWSensor_Click);
-            // 
-            // BUTrestartmission
-            // 
-            this.BUTrestartmission.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUTrestartmission.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUTrestartmission.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUTrestartmission, "BUTrestartmission");
-            this.BUTrestartmission.Name = "BUTrestartmission";
-            this.toolTip1.SetToolTip(this.BUTrestartmission, resources.GetString("BUTrestartmission.ToolTip"));
-            this.BUTrestartmission.UseVisualStyleBackColor = true;
-            this.BUTrestartmission.Click += new System.EventHandler(this.BUTrestartmission_Click);
-            // 
             // BUTactiondo
             // 
             this.BUTactiondo.ColorMouseDown = System.Drawing.Color.Empty;
@@ -827,6 +747,48 @@
             this.toolTip1.SetToolTip(this.BUTactiondo, resources.GetString("BUTactiondo.ToolTip"));
             this.BUTactiondo.UseVisualStyleBackColor = true;
             this.BUTactiondo.Click += new System.EventHandler(this.BUTactiondo_Click);
+            // 
+            // tabActionsSimple
+            // 
+            this.tabActionsSimple.Controls.Add(this.myButton1);
+            this.tabActionsSimple.Controls.Add(this.myButton2);
+            this.tabActionsSimple.Controls.Add(this.myButton3);
+            resources.ApplyResources(this.tabActionsSimple, "tabActionsSimple");
+            this.tabActionsSimple.Name = "tabActionsSimple";
+            this.tabActionsSimple.UseVisualStyleBackColor = true;
+            // 
+            // myButton1
+            // 
+            this.myButton1.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton1.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton1.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton1, "myButton1");
+            this.myButton1.Name = "myButton1";
+            this.toolTip1.SetToolTip(this.myButton1, resources.GetString("myButton1.ToolTip"));
+            this.myButton1.UseVisualStyleBackColor = true;
+            this.myButton1.Click += new System.EventHandler(this.BUT_quickmanual_Click);
+            // 
+            // myButton2
+            // 
+            this.myButton2.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton2.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton2.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton2, "myButton2");
+            this.myButton2.Name = "myButton2";
+            this.toolTip1.SetToolTip(this.myButton2, resources.GetString("myButton2.ToolTip"));
+            this.myButton2.UseVisualStyleBackColor = true;
+            this.myButton2.Click += new System.EventHandler(this.BUT_quickrtl_Click);
+            // 
+            // myButton3
+            // 
+            this.myButton3.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton3.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton3.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton3, "myButton3");
+            this.myButton3.Name = "myButton3";
+            this.toolTip1.SetToolTip(this.myButton3, resources.GetString("myButton3.ToolTip"));
+            this.myButton3.UseVisualStyleBackColor = true;
+            this.myButton3.Click += new System.EventHandler(this.BUT_quickauto_Click);
             // 
             // tabPagePreFlight
             // 
@@ -2148,47 +2110,54 @@
             // 
             this.bindingSourceStatusTab.DataSource = typeof(MissionPlanner.CurrentState);
             // 
-            // myButton3
+            // myButton5
             // 
-            this.myButton3.ColorMouseDown = System.Drawing.Color.Empty;
-            this.myButton3.ColorMouseOver = System.Drawing.Color.Empty;
-            this.myButton3.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.myButton3, "myButton3");
-            this.myButton3.Name = "myButton3";
-            this.toolTip1.SetToolTip(this.myButton3, resources.GetString("myButton3.ToolTip"));
-            this.myButton3.UseVisualStyleBackColor = true;
-            this.myButton3.Click += new System.EventHandler(this.BUT_quickauto_Click);
+            this.myButton5.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton5.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton5.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton5, "myButton5");
+            this.myButton5.Name = "myButton5";
+            this.toolTip1.SetToolTip(this.myButton5, resources.GetString("myButton5.ToolTip"));
+            this.myButton5.UseVisualStyleBackColor = true;
+            this.myButton5.Click += new System.EventHandler(this.myButton5_Click);
             // 
-            // myButton2
+            // myButton6
             // 
-            this.myButton2.ColorMouseDown = System.Drawing.Color.Empty;
-            this.myButton2.ColorMouseOver = System.Drawing.Color.Empty;
-            this.myButton2.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.myButton2, "myButton2");
-            this.myButton2.Name = "myButton2";
-            this.toolTip1.SetToolTip(this.myButton2, resources.GetString("myButton2.ToolTip"));
-            this.myButton2.UseVisualStyleBackColor = true;
-            this.myButton2.Click += new System.EventHandler(this.BUT_quickrtl_Click);
+            this.myButton6.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton6.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton6.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton6, "myButton6");
+            this.myButton6.Name = "myButton6";
+            this.toolTip1.SetToolTip(this.myButton6, resources.GetString("myButton6.ToolTip"));
+            this.myButton6.UseVisualStyleBackColor = true;
+            this.myButton6.Click += new System.EventHandler(this.myButton6_Click);
             // 
-            // myButton1
+            // label7
             // 
-            this.myButton1.ColorMouseDown = System.Drawing.Color.Empty;
-            this.myButton1.ColorMouseOver = System.Drawing.Color.Empty;
-            this.myButton1.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.myButton1, "myButton1");
-            this.myButton1.Name = "myButton1";
-            this.toolTip1.SetToolTip(this.myButton1, resources.GetString("myButton1.ToolTip"));
-            this.myButton1.UseVisualStyleBackColor = true;
-            this.myButton1.Click += new System.EventHandler(this.BUT_quickmanual_Click);
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // tabActionsSimple
+            // BUT_joystick
             // 
-            this.tabActionsSimple.Controls.Add(this.myButton1);
-            this.tabActionsSimple.Controls.Add(this.myButton2);
-            this.tabActionsSimple.Controls.Add(this.myButton3);
-            resources.ApplyResources(this.tabActionsSimple, "tabActionsSimple");
-            this.tabActionsSimple.Name = "tabActionsSimple";
-            this.tabActionsSimple.UseVisualStyleBackColor = true;
+            this.BUT_joystick.ColorMouseDown = System.Drawing.Color.Empty;
+            this.BUT_joystick.ColorMouseOver = System.Drawing.Color.Empty;
+            this.BUT_joystick.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.BUT_joystick, "BUT_joystick");
+            this.BUT_joystick.Name = "BUT_joystick";
+            this.toolTip1.SetToolTip(this.BUT_joystick, resources.GetString("BUT_joystick.ToolTip"));
+            this.BUT_joystick.UseVisualStyleBackColor = true;
+            this.BUT_joystick.Click += new System.EventHandler(this.BUT_joystick_Click);
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // modifyandSetLoiterRad
             // 
@@ -2357,6 +2326,8 @@
             this.contextMenuStripQuickView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceQuickTab)).EndInit();
             this.tabActions.ResumeLayout(false);
+            this.tabActions.PerformLayout();
+            this.tabActionsSimple.ResumeLayout(false);
             this.tabPagePreFlight.ResumeLayout(false);
             this.tabGauges.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGaugesTab)).EndInit();
@@ -2397,7 +2368,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
-            this.tabActionsSimple.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2414,11 +2384,8 @@
         private Controls.HUD hud1;
         private Controls.MyButton BUT_clear_track;
         private System.Windows.Forms.CheckBox CB_tuning;
-        private Controls.MyButton BUT_RAWSensor;
         private Controls.MyButton BUTactiondo;
-        private Controls.MyButton BUTrestartmission;
         private System.Windows.Forms.ComboBox CMB_action;
-        private Controls.MyButton BUT_Homealt;
         private System.Windows.Forms.TrackBar tracklog;
         private Controls.MyButton BUT_playlog;
         private Controls.MyButton BUT_loadtelem;
@@ -2441,11 +2408,7 @@
         private Controls.MyButton BUT_setmode;
         private System.Windows.Forms.ComboBox CMB_setwp;
         private Controls.MyButton BUT_setwp;
-        private Controls.MyButton BUT_quickmanual;
-        private Controls.MyButton BUT_quickrtl;
-        private Controls.MyButton BUT_quickauto;
         private Controls.MyButton BUT_log2kml;
-        private Controls.MyButton BUT_joystick;
         private System.Windows.Forms.ToolTip toolTip1;
         private Controls.MyLabel lbl_logpercent;
         private System.Windows.Forms.ToolStripMenuItem pointCameraHereToolStripMenuItem;
@@ -2577,5 +2540,11 @@
         private Controls.MyButton myButton1;
         private Controls.MyButton myButton2;
         private Controls.MyButton myButton3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
+        private Controls.MyButton myButton6;
+        private Controls.MyButton myButton5;
+        private Controls.MyButton BUT_joystick;
+        private System.Windows.Forms.Timer timer1;
     }
 }

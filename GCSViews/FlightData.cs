@@ -4656,6 +4656,62 @@ namespace MissionPlanner.GCSViews
             ThemeManager.ApplyThemeTo(temp);
             temp.Show();
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        UInt64 cam_count = 0;
+        private void myButton5_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            timer1.Interval = int.Parse(textBox1.Text.ToString()); 
+            cam_count = 0;
+        }
+
+        private void myButton6_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void arm_disarm()
+        {
+            // arm the MAV
+            try
+            {
+                bool ans = MainV2.comPort.doARM(!MainV2.comPort.MAV.cs.armed);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
+            }
+        }
+
+        UInt64 decode_len = 3000;
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            cam_count++;
+            label7.Text = "n:" + cam_count.ToString();
+            if (cam_count <= decode_len)
+            {
+                MainV2.comPort.setDigicamControl(true);
+            }
+            else if (cam_count == (decode_len+1))
+            {
+                arm_disarm();
+            }
+            else if (cam_count == (decode_len+10))
+            {
+                arm_disarm();
+            }
+            else if (cam_count > (decode_len+20))
+            {
+                cam_count = 0;
+                //timer1.Interval += 10;
+                textBox1.Text = timer1.Interval.ToString();
+            }
+        }
     }
 }
  
