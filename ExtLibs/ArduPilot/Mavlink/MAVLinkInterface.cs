@@ -3561,6 +3561,15 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
         {
             setMode(MAV.sysid, MAV.compid, modein);
         }
+        public void setCharge(byte num)
+        {
+            mavlink_data96_t data = new mavlink_data96_t();
+            data.type = 10;
+            data.data[0] = num;
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA96, data);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA96, data);
+        }
 
         public void setMode(byte sysid, byte compid, string modein)
         {

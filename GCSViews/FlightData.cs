@@ -4737,5 +4737,74 @@ if (a is CheckBox && ((CheckBox)a).Checked)
 
 
         }
+
+        private void myButton7_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+            try
+            {
+                ((Control)sender).Enabled = false;
+                MainV2.comPort.setCharge(4);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+            ((Control)sender).Enabled = true;
+        }
+
+        private void myButton4_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+            try
+            {
+                ((Control)sender).Enabled = false;
+                MainV2.comPort.setCharge(1);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+            ((Control)sender).Enabled = true;
+        }
+
+        private void myButton5_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+            try
+            {
+                ((Control)sender).Enabled = false;
+                MainV2.comPort.setCharge(2);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+            ((Control)sender).Enabled = true;
+        }
+
+        private void myButton_left_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+            try
+            {
+                ((Control)sender).Enabled = false;
+                MainV2.comPort.setCharge(3);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+            ((Control)sender).Enabled = true;
+        }
+
+        private void myButton8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -2726,6 +2726,13 @@ namespace MissionPlanner
                             autopilot = (byte)MAVLink.MAV_AUTOPILOT.INVALID,
                             mavlink_version = 3 // MAVLink.MAVLINK_VERSION
                         };
+                        MAVLink.mavlink_data96_t a_point = new MAVLink.mavlink_data96_t();
+                        a_point.type = 0;
+                        a_point.len = 0;
+                        a_point.data[0] = 1;
+                        a_point.data[1] = 2;
+                        a_point.data[2] = 3;
+                        a_point.data[3] = 4;
 
                         // enumerate each link
                         foreach (var port in Comports.ToArray())
@@ -2792,6 +2799,7 @@ namespace MissionPlanner
                                     }
 
                                     port.sendPacket(htb, MAV.sysid, MAV.compid);
+                                    //port.sendPacket(a_point, MAV.sysid, MAV.compid);
                                 }
                                 catch (Exception ex)
                                 {
