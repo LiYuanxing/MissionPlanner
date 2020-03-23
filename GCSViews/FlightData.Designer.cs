@@ -194,6 +194,7 @@
       
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2452,6 +2453,12 @@
             // 
             this.bindingSourceStatusTab.DataSource = typeof(MissionPlanner.CurrentState);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            // 
             // FlightData
             // 
             this.Controls.Add(this.MainH);
@@ -2709,5 +2716,6 @@
         private Controls.MyButton myButton7;
         private Controls.MyButton myButton6;
         private Controls.MyButton myButton5;
+        private System.Windows.Forms.Timer timer1;
     }
 }

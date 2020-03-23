@@ -4747,27 +4747,41 @@ if (a is CheckBox && ((CheckBox)a).Checked)
 
         private void myButton4_Click(object sender, EventArgs e)
         {
-
+            MainV2.comPort.setCharge(1);//up
         }
 
         private void myButton6_Click(object sender, EventArgs e)
         {
-
+            MainV2.comPort.setCharge(2);//down
         }
 
         private void myButton7_Click(object sender, EventArgs e)
         {
-
+            MainV2.comPort.setCharge(3);//left
         }
 
         private void myButton8_Click(object sender, EventArgs e)
         {
-
+            MainV2.comPort.setCharge(4);//right
         }
 
         private void myButton9_Click(object sender, EventArgs e)
         {
+            MainV2.comPort.MAV.cs.a_cmd_id = 0;
+            MainV2.comPort.MAV.cs.a_cmd_dir = 0;
+            MainV2.comPort.MAV.cs.a_up = 0;
+            MainV2.comPort.MAV.cs.a_down = 0;
+            MainV2.comPort.MAV.cs.a_left = 0;
+            MainV2.comPort.MAV.cs.a_right = 0;
+        }
 
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            if (MainV2.comPort.MAV.cs.a_cmd_id > 0)
+            {
+                MainV2.comPort.MAV.cs.a_cmd_id = 0;
+                MainV2.comPort.setCharge_id(MainV2.comPort.MAV.cs.a_cmd_id, MainV2.comPort.MAV.cs.a_cmd_dir);
+            }
         }
     }
 }
