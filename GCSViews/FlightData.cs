@@ -4744,5 +4744,30 @@ if (a is CheckBox && ((CheckBox)a).Checked)
 
 
         }
+
+        private void myButton4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void myButton6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void myButton7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void myButton8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void myButton9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
