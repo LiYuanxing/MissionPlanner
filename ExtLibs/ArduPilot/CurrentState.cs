@@ -256,6 +256,31 @@ namespace MissionPlanner
         [DisplayText("Longitude (dd)")]
         public double lng { get; set; }
 
+        // position
+        [DisplayText("Latitude (dd)")]
+        [GroupText("Position")]
+        public double a_lat { get; set; }
+        public byte a_up, a_down, a_left, a_right;
+        public byte a_cmd_id,a_cmd_dir;
+
+        [GroupText("Position")]
+        [DisplayText("Longitude (dd)")]
+        public double a_lng { get; set; }
+
+        [GroupText("Attitude")]
+        [DisplayText("Yaw (deg)")]
+        public float a_yaw
+        {
+            get => _yaw;
+            set
+            {
+                if (value < 0)
+                    _yaw = value + 360;
+                else
+                    _yaw = value;
+            }
+        }
+
         [GroupText("Position")]
         [DisplayText("Altitude (alt)")]
         public float alt
@@ -2367,10 +2392,44 @@ namespace MissionPlanner
                         pitch = (float) (att.pitch * MathHelper.rad2deg);
                         yaw = (float) (att.yaw * MathHelper.rad2deg);
 
+                        if (mavLinkMessage.sysid == 1)
+                        {
+                            a_yaw = yaw;
+                        }
+
                         //Console.WriteLine(MAV.sysid + " " +roll + " " + pitch + " " + yaw);
 
                         //MAVLink.packets[(byte)MAVLink.MSG_NAMES.ATTITUDE);
                     }
+
+                        break;
+                    case (uint)MAVLink.MAVLINK_MSG_ID.DATA96:
+                        {
+                            var data96 = mavLinkMessage.ToStructure<MAVLink.mavlink_data96_t>();
+
+
+                            if(data96.type >1 && data96.data[0] == 1)
+                            {
+
+                                if( mavLinkMessage.sysid != a_up &&
+                                    mavLinkMessage.sysid != a_down &&
+                                    mavLinkMessage.sysid != a_left &&
+                                    mavLinkMessage.sysid != a_right)
+                                {
+                                    if(a_up == 0)
+                                    {
+                                        a_up = data96.type;
+                                        a_cmd_dir = 1;
+                                    }
+                                    else if(a_down == 0)
+                                    {
+                                        a_down = data96.type;
+                                        a_cmd_dir = 2;
+                                    }
+                                    a_cmd_id = data96.type;
+                                }
+                            }
+                        }
 
                         break;
                     case (uint) MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT:
@@ -2405,7 +2464,11 @@ namespace MissionPlanner
 
                     {
                         var gps = mavLinkMessage.ToStructure<MAVLink.mavlink_gps_raw_int_t>();
-
+                        if (mavLinkMessage.sysid == 1)
+                        {
+                            a_lat = gps.lat * 1.0e-7;
+                            a_lng = gps.lon * 1.0e-7;
+                        }
                         if (!useLocation)
                         {
                             lat = gps.lat * 1.0e-7;

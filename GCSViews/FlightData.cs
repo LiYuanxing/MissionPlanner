@@ -4741,7 +4741,54 @@ if (a is CheckBox && ((CheckBox)a).Checked)
         {
             MainV2.comPort.doARM(true, true);
             MainV2.comPort.doCommand(MAVLink.MAV_CMD.GUIDED_ENABLE, 0, 0, 0, 0, 0, 0, 0);
+        }
 
+        private void myButton4_Click(object sender, EventArgs e)
+        {
+             MainV2.comPort.setCharge(1);//up
+        }
+
+        private void myButton6_Click(object sender, EventArgs e)
+        {
+            MainV2.comPort.setCharge(2);//down
+        }
+
+        private void myButton7_Click(object sender, EventArgs e)
+        {
+            MainV2.comPort.setCharge(3);//left
+        }
+
+        private void myButton_right_Click(object sender, EventArgs e)
+        {
+            MainV2.comPort.setCharge(4);//right
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            if(MainV2.comPort.MAV.cs.a_cmd_id > 0 )
+            {
+                MainV2.comPort.MAV.cs.a_cmd_id = 0;
+                MainV2.comPort.setCharge_id(MainV2.comPort.MAV.cs.a_cmd_id, MainV2.comPort.MAV.cs.a_cmd_dir);
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void myButton4_Click_1(object sender, EventArgs e)
+        {
+            MainV2.comPort.MAV.cs.a_cmd_id = 0;
+            MainV2.comPort.MAV.cs.a_cmd_dir = 0;
+            MainV2.comPort.MAV.cs.a_up = 0;
+            MainV2.comPort.MAV.cs.a_down = 0;
+            MainV2.comPort.MAV.cs.a_left = 0;
+            MainV2.comPort.MAV.cs.a_right = 0;
+        }
+
+        private void tableLayoutPanelQuick_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

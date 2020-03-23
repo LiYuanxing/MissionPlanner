@@ -31,15 +31,6 @@
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabQuick = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelQuick = new System.Windows.Forms.TableLayoutPanel();
-            this.quickView6 = new MissionPlanner.Controls.QuickView();
-            this.contextMenuStripQuickView = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.setViewCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bindingSourceQuickTab = new System.Windows.Forms.BindingSource(this.components);
-            this.quickView5 = new MissionPlanner.Controls.QuickView();
-            this.quickView4 = new MissionPlanner.Controls.QuickView();
-            this.quickView3 = new MissionPlanner.Controls.QuickView();
-            this.quickView2 = new MissionPlanner.Controls.QuickView();
-            this.quickView1 = new MissionPlanner.Controls.QuickView();
             this.tabActions = new System.Windows.Forms.TabPage();
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
             this.BUT_abortland = new MissionPlanner.Controls.MyButton();
@@ -95,10 +86,7 @@
             this.tabTLogs = new System.Windows.Forms.TabPage();
             this.tableLayoutPaneltlogs = new System.Windows.Forms.TableLayoutPanel();
             this.BUT_loadtelem = new MissionPlanner.Controls.MyButton();
-            this.lbl_playbackspeed = new MissionPlanner.Controls.MyLabel();
-            this.lbl_logpercent = new MissionPlanner.Controls.MyLabel();
             this.tracklog = new System.Windows.Forms.TrackBar();
-            this.LBL_logfn = new MissionPlanner.Controls.MyLabel();
             this.BUT_log2kml = new MissionPlanner.Controls.MyButton();
             this.BUT_playlog = new MissionPlanner.Controls.MyButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -140,6 +128,13 @@
             this.groupBoxPitch = new System.Windows.Forms.GroupBox();
             this.trackBarPitch = new System.Windows.Forms.TrackBar();
             this.TXT_gimbalPitchPos = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.myButton4 = new MissionPlanner.Controls.MyButton();
+            this.myButton_right = new MissionPlanner.Controls.MyButton();
+            this.myButton_left = new MissionPlanner.Controls.MyButton();
+            this.myButton_down = new MissionPlanner.Controls.MyButton();
+            this.myButton5 = new MissionPlanner.Controls.MyButton();
+            this.myButton_up = new MissionPlanner.Controls.MyButton();
             this.tableMap = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.zg1 = new ZedGraph.ZedGraphControl();
@@ -168,23 +163,23 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lbl_hdop = new MissionPlanner.Controls.MyLabel();
-            this.lbl_sats = new MissionPlanner.Controls.MyLabel();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
             this.TRK_zoom = new MissionPlanner.Controls.MyTrackBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.coords1 = new MissionPlanner.Controls.Coords();
             this.Zoomlevel = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new MissionPlanner.Controls.MyLabel();
             this.CHK_autopan = new System.Windows.Forms.CheckBox();
             this.CB_tuning = new System.Windows.Forms.CheckBox();
+            this.contextMenuStripQuickView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.setViewCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bindingSourceQuickTab = new System.Windows.Forms.BindingSource(this.components);
             this.ZedGraphTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.scriptChecker = new System.Windows.Forms.Timer(this.components);
-      
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -198,9 +193,6 @@
             this.tabControlactions.SuspendLayout();
             this.contextMenuStripactionstab.SuspendLayout();
             this.tabQuick.SuspendLayout();
-            this.tableLayoutPanelQuick.SuspendLayout();
-            this.contextMenuStripQuickView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceQuickTab)).BeginInit();
             this.tabActions.SuspendLayout();
             this.tabActionsSimple.SuspendLayout();
             this.tabPagePreFlight.SuspendLayout();
@@ -223,6 +215,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarYaw)).BeginInit();
             this.groupBoxPitch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPitch)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.tableMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -233,6 +226,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TRK_zoom)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
+            this.contextMenuStripQuickView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceQuickTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.SuspendLayout();
             // 
@@ -373,6 +368,7 @@
             // 
             // contextMenuStripHud
             // 
+            this.contextMenuStripHud.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStripHud.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.videoToolStripMenuItem,
             this.setAspectRatioToolStripMenuItem,
@@ -488,6 +484,7 @@
             this.tabControlactions.Controls.Add(this.tabScripts);
             this.tabControlactions.Controls.Add(this.tabPagemessages);
             this.tabControlactions.Controls.Add(this.tabPayload);
+            this.tabControlactions.Controls.Add(this.tabPage1);
             resources.ApplyResources(this.tabControlactions, "tabControlactions");
             this.tabControlactions.Multiline = true;
             this.tabControlactions.Name = "tabControlactions";
@@ -498,6 +495,7 @@
             // 
             // contextMenuStripactionstab
             // 
+            this.contextMenuStripactionstab.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStripactionstab.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem});
             this.contextMenuStripactionstab.Name = "contextMenuStripactionstab";
@@ -520,103 +518,8 @@
             // tableLayoutPanelQuick
             // 
             resources.ApplyResources(this.tableLayoutPanelQuick, "tableLayoutPanelQuick");
-            this.tableLayoutPanelQuick.Controls.Add(this.quickView6, 1, 2);
-            this.tableLayoutPanelQuick.Controls.Add(this.quickView5, 0, 2);
-            this.tableLayoutPanelQuick.Controls.Add(this.quickView4, 1, 1);
-            this.tableLayoutPanelQuick.Controls.Add(this.quickView3, 0, 1);
-            this.tableLayoutPanelQuick.Controls.Add(this.quickView2, 1, 0);
-            this.tableLayoutPanelQuick.Controls.Add(this.quickView1, 0, 0);
             this.tableLayoutPanelQuick.Name = "tableLayoutPanelQuick";
-            // 
-            // quickView6
-            // 
-            this.quickView6.ContextMenuStrip = this.contextMenuStripQuickView;
-            this.quickView6.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "DistToHome", true));
-            this.quickView6.desc = "DistToMAV";
-            resources.ApplyResources(this.quickView6, "quickView6");
-            this.quickView6.Name = "quickView6";
-            this.quickView6.number = 0D;
-            this.quickView6.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(252)))));
-            this.quickView6.numberformat = "0.00";
-            this.quickView6.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
-            // 
-            // contextMenuStripQuickView
-            // 
-            this.contextMenuStripQuickView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setViewCountToolStripMenuItem});
-            this.contextMenuStripQuickView.Name = "contextMenuStripQuickView";
-            resources.ApplyResources(this.contextMenuStripQuickView, "contextMenuStripQuickView");
-            // 
-            // setViewCountToolStripMenuItem
-            // 
-            this.setViewCountToolStripMenuItem.Name = "setViewCountToolStripMenuItem";
-            resources.ApplyResources(this.setViewCountToolStripMenuItem, "setViewCountToolStripMenuItem");
-            this.setViewCountToolStripMenuItem.Click += new System.EventHandler(this.setViewCountToolStripMenuItem_Click);
-            // 
-            // bindingSourceQuickTab
-            // 
-            this.bindingSourceQuickTab.DataSource = typeof(MissionPlanner.CurrentState);
-            // 
-            // quickView5
-            // 
-            this.quickView5.ContextMenuStrip = this.contextMenuStripQuickView;
-            this.quickView5.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "verticalspeed", true));
-            this.quickView5.desc = "verticalspeed";
-            resources.ApplyResources(this.quickView5, "quickView5");
-            this.quickView5.Name = "quickView5";
-            this.quickView5.number = 0D;
-            this.quickView5.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(86)))));
-            this.quickView5.numberformat = "0.00";
-            this.quickView5.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
-            // 
-            // quickView4
-            // 
-            this.quickView4.ContextMenuStrip = this.contextMenuStripQuickView;
-            this.quickView4.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "yaw", true));
-            this.quickView4.desc = "yaw";
-            resources.ApplyResources(this.quickView4, "quickView4");
-            this.quickView4.Name = "quickView4";
-            this.quickView4.number = 0D;
-            this.quickView4.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(83)))));
-            this.quickView4.numberformat = "0.00";
-            this.quickView4.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
-            // 
-            // quickView3
-            // 
-            this.quickView3.ContextMenuStrip = this.contextMenuStripQuickView;
-            this.quickView3.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "wp_dist", true));
-            this.quickView3.desc = "wp_dist";
-            resources.ApplyResources(this.quickView3, "quickView3");
-            this.quickView3.Name = "quickView3";
-            this.quickView3.number = 0D;
-            this.quickView3.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(96)))), ((int)(((byte)(91)))));
-            this.quickView3.numberformat = "0.00";
-            this.quickView3.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
-            // 
-            // quickView2
-            // 
-            this.quickView2.ContextMenuStrip = this.contextMenuStripQuickView;
-            this.quickView2.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "groundspeed", true));
-            this.quickView2.desc = "groundspeed";
-            resources.ApplyResources(this.quickView2, "quickView2");
-            this.quickView2.Name = "quickView2";
-            this.quickView2.number = 0D;
-            this.quickView2.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(132)))), ((int)(((byte)(46)))));
-            this.quickView2.numberformat = "0.00";
-            this.quickView2.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
-            // 
-            // quickView1
-            // 
-            this.quickView1.ContextMenuStrip = this.contextMenuStripQuickView;
-            this.quickView1.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "alt", true));
-            this.quickView1.desc = "alt";
-            resources.ApplyResources(this.quickView1, "quickView1");
-            this.quickView1.Name = "quickView1";
-            this.quickView1.number = 0D;
-            this.quickView1.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(151)))), ((int)(((byte)(248)))));
-            this.quickView1.numberformat = "0.00";
-            this.toolTip1.SetToolTip(this.quickView1, resources.GetString("quickView1.ToolTip"));
-            this.quickView1.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
+            this.tableLayoutPanelQuick.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelQuick_Paint);
             // 
             // tabActions
             // 
@@ -1546,10 +1449,7 @@
             // 
             resources.ApplyResources(this.tableLayoutPaneltlogs, "tableLayoutPaneltlogs");
             this.tableLayoutPaneltlogs.Controls.Add(this.BUT_loadtelem, 0, 0);
-            this.tableLayoutPaneltlogs.Controls.Add(this.lbl_playbackspeed, 2, 2);
-            this.tableLayoutPaneltlogs.Controls.Add(this.lbl_logpercent, 2, 1);
             this.tableLayoutPaneltlogs.Controls.Add(this.tracklog, 1, 1);
-            this.tableLayoutPaneltlogs.Controls.Add(this.LBL_logfn, 1, 0);
             this.tableLayoutPaneltlogs.Controls.Add(this.BUT_log2kml, 0, 2);
             this.tableLayoutPaneltlogs.Controls.Add(this.BUT_playlog, 0, 1);
             this.tableLayoutPaneltlogs.Controls.Add(this.panel2, 1, 2);
@@ -1565,18 +1465,6 @@
             this.BUT_loadtelem.UseVisualStyleBackColor = true;
             this.BUT_loadtelem.Click += new System.EventHandler(this.BUT_loadtelem_Click);
             // 
-            // lbl_playbackspeed
-            // 
-            resources.ApplyResources(this.lbl_playbackspeed, "lbl_playbackspeed");
-            this.lbl_playbackspeed.Name = "lbl_playbackspeed";
-            this.lbl_playbackspeed.resize = false;
-            // 
-            // lbl_logpercent
-            // 
-            resources.ApplyResources(this.lbl_logpercent, "lbl_logpercent");
-            this.lbl_logpercent.Name = "lbl_logpercent";
-            this.lbl_logpercent.resize = false;
-            // 
             // tracklog
             // 
             resources.ApplyResources(this.tracklog, "tracklog");
@@ -1584,13 +1472,6 @@
             this.tracklog.Name = "tracklog";
             this.tracklog.TickFrequency = 5;
             this.tracklog.Scroll += new System.EventHandler(this.tracklog_Scroll);
-            // 
-            // LBL_logfn
-            // 
-            this.tableLayoutPaneltlogs.SetColumnSpan(this.LBL_logfn, 2);
-            resources.ApplyResources(this.LBL_logfn, "LBL_logfn");
-            this.LBL_logfn.Name = "LBL_logfn";
-            this.LBL_logfn.resize = false;
             // 
             // BUT_log2kml
             // 
@@ -1963,6 +1844,83 @@
             resources.ApplyResources(this.TXT_gimbalPitchPos, "TXT_gimbalPitchPos");
             this.TXT_gimbalPitchPos.Name = "TXT_gimbalPitchPos";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.myButton4);
+            this.tabPage1.Controls.Add(this.myButton_right);
+            this.tabPage1.Controls.Add(this.myButton_left);
+            this.tabPage1.Controls.Add(this.myButton_down);
+            this.tabPage1.Controls.Add(this.myButton5);
+            this.tabPage1.Controls.Add(this.myButton_up);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // myButton4
+            // 
+            this.myButton4.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton4.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton4.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton4, "myButton4");
+            this.myButton4.Name = "myButton4";
+            this.toolTip1.SetToolTip(this.myButton4, resources.GetString("myButton4.ToolTip"));
+            this.myButton4.UseVisualStyleBackColor = true;
+            this.myButton4.Click += new System.EventHandler(this.myButton4_Click_1);
+            // 
+            // myButton_right
+            // 
+            this.myButton_right.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton_right.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton_right.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton_right, "myButton_right");
+            this.myButton_right.Name = "myButton_right";
+            this.toolTip1.SetToolTip(this.myButton_right, resources.GetString("myButton_right.ToolTip"));
+            this.myButton_right.UseVisualStyleBackColor = true;
+            this.myButton_right.Click += new System.EventHandler(this.myButton_right_Click);
+            // 
+            // myButton_left
+            // 
+            this.myButton_left.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton_left.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton_left.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton_left, "myButton_left");
+            this.myButton_left.Name = "myButton_left";
+            this.toolTip1.SetToolTip(this.myButton_left, resources.GetString("myButton_left.ToolTip"));
+            this.myButton_left.UseVisualStyleBackColor = true;
+            this.myButton_left.Click += new System.EventHandler(this.myButton7_Click);
+            // 
+            // myButton_down
+            // 
+            this.myButton_down.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton_down.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton_down.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton_down, "myButton_down");
+            this.myButton_down.Name = "myButton_down";
+            this.toolTip1.SetToolTip(this.myButton_down, resources.GetString("myButton_down.ToolTip"));
+            this.myButton_down.UseVisualStyleBackColor = true;
+            this.myButton_down.Click += new System.EventHandler(this.myButton6_Click);
+            // 
+            // myButton5
+            // 
+            this.myButton5.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton5.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton5.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton5, "myButton5");
+            this.myButton5.Name = "myButton5";
+            this.toolTip1.SetToolTip(this.myButton5, resources.GetString("myButton5.ToolTip"));
+            this.myButton5.UseVisualStyleBackColor = true;
+            // 
+            // myButton_up
+            // 
+            this.myButton_up.ColorMouseDown = System.Drawing.Color.Empty;
+            this.myButton_up.ColorMouseOver = System.Drawing.Color.Empty;
+            this.myButton_up.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.myButton_up, "myButton_up");
+            this.myButton_up.Name = "myButton_up";
+            this.toolTip1.SetToolTip(this.myButton_up, resources.GetString("myButton_up.ToolTip"));
+            this.myButton_up.UseVisualStyleBackColor = true;
+            this.myButton_up.Click += new System.EventHandler(this.myButton4_Click);
+            // 
             // tableMap
             // 
             resources.ApplyResources(this.tableMap, "tableMap");
@@ -1990,8 +1948,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
-            this.splitContainer1.Panel2.Controls.Add(this.lbl_hdop);
-            this.splitContainer1.Panel2.Controls.Add(this.lbl_sats);
             this.splitContainer1.Panel2.Controls.Add(this.gMapControl1);
             this.splitContainer1.Panel2.Controls.Add(this.TRK_zoom);
             // 
@@ -2010,6 +1966,7 @@
             // 
             // contextMenuStripMap
             // 
+            this.contextMenuStripMap.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStripMap.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goHereToolStripMenuItem,
             this.flyToHereAltToolStripMenuItem,
@@ -2190,22 +2147,6 @@
             this.label4.Name = "label4";
             this.label4.Tag = "custom";
             // 
-            // lbl_hdop
-            // 
-            resources.ApplyResources(this.lbl_hdop, "lbl_hdop");
-            this.lbl_hdop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "gpshdop", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "hdop: 0.0"));
-            this.lbl_hdop.Name = "lbl_hdop";
-            this.lbl_hdop.resize = true;
-            this.toolTip1.SetToolTip(this.lbl_hdop, resources.GetString("lbl_hdop.ToolTip"));
-            // 
-            // lbl_sats
-            // 
-            resources.ApplyResources(this.lbl_sats, "lbl_sats");
-            this.lbl_sats.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "satcount", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "Sats: 0"));
-            this.lbl_sats.Name = "lbl_sats";
-            this.lbl_sats.resize = true;
-            this.toolTip1.SetToolTip(this.lbl_sats, resources.GetString("lbl_sats.ToolTip"));
-            // 
             // gMapControl1
             // 
             this.gMapControl1.BackColor = System.Drawing.Color.Black;
@@ -2254,7 +2195,6 @@
             // 
             this.panel1.Controls.Add(this.coords1);
             this.panel1.Controls.Add(this.Zoomlevel);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.CHK_autopan);
             this.panel1.Controls.Add(this.CB_tuning);
             resources.ApplyResources(this.panel1, "panel1");
@@ -2302,12 +2242,6 @@
             0});
             this.Zoomlevel.ValueChanged += new System.EventHandler(this.Zoomlevel_ValueChanged);
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.label1.resize = false;
-            // 
             // CHK_autopan
             // 
             resources.ApplyResources(this.CHK_autopan, "CHK_autopan");
@@ -2326,6 +2260,24 @@
             this.CB_tuning.UseVisualStyleBackColor = true;
             this.CB_tuning.CheckedChanged += new System.EventHandler(this.CB_tuning_CheckedChanged);
             // 
+            // contextMenuStripQuickView
+            // 
+            this.contextMenuStripQuickView.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStripQuickView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setViewCountToolStripMenuItem});
+            this.contextMenuStripQuickView.Name = "contextMenuStripQuickView";
+            resources.ApplyResources(this.contextMenuStripQuickView, "contextMenuStripQuickView");
+            // 
+            // setViewCountToolStripMenuItem
+            // 
+            this.setViewCountToolStripMenuItem.Name = "setViewCountToolStripMenuItem";
+            resources.ApplyResources(this.setViewCountToolStripMenuItem, "setViewCountToolStripMenuItem");
+            this.setViewCountToolStripMenuItem.Click += new System.EventHandler(this.setViewCountToolStripMenuItem_Click);
+            // 
+            // bindingSourceQuickTab
+            // 
+            this.bindingSourceQuickTab.DataSource = typeof(MissionPlanner.CurrentState);
+            // 
             // ZedGraphTimer
             // 
             this.ZedGraphTimer.Tick += new System.EventHandler(this.timer1_Tick);
@@ -2342,7 +2294,6 @@
             // scriptChecker
             // 
             this.scriptChecker.Tick += new System.EventHandler(this.scriptChecker_Tick);
-         
             // 
             // Messagetabtimer
             // 
@@ -2352,6 +2303,12 @@
             // bindingSourceStatusTab
             // 
             this.bindingSourceStatusTab.DataSource = typeof(MissionPlanner.CurrentState);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // FlightData
             // 
@@ -2375,9 +2332,6 @@
             this.tabControlactions.ResumeLayout(false);
             this.contextMenuStripactionstab.ResumeLayout(false);
             this.tabQuick.ResumeLayout(false);
-            this.tableLayoutPanelQuick.ResumeLayout(false);
-            this.contextMenuStripQuickView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceQuickTab)).EndInit();
             this.tabActions.ResumeLayout(false);
             this.tabActionsSimple.ResumeLayout(false);
             this.tabPagePreFlight.ResumeLayout(false);
@@ -2407,6 +2361,7 @@
             this.groupBoxPitch.ResumeLayout(false);
             this.groupBoxPitch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPitch)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.tableMap.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -2419,6 +2374,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).EndInit();
+            this.contextMenuStripQuickView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceQuickTab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
             this.ResumeLayout(false);
 
@@ -2602,5 +2559,13 @@
         private Controls.RelayOptions relayOptions4;
         private System.Windows.Forms.ToolStripMenuItem hereLinkVideoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gStreamerStopToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Controls.MyButton myButton_right;
+        private Controls.MyButton myButton_left;
+        private Controls.MyButton myButton_down;
+        private Controls.MyButton myButton5;
+        private Controls.MyButton myButton_up;
+        private System.Windows.Forms.Timer timer1;
+        private Controls.MyButton myButton4;
     }
 }
