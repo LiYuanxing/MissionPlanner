@@ -3187,6 +3187,49 @@ Please check the following
             setMode(MAV.sysid, MAV.compid, modein);
         }
 
+        public void setCharge(byte num,int sysid, int compid)
+        {
+            mavlink_data16_t data = new mavlink_data16_t();
+            data.data = new byte[16];
+            data.type = 11;//cmd
+            data.data[0] = num;
+            data.data[1] = (byte)sysid;
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, sysid, compid);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, sysid, compid);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, sysid, compid);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, sysid, compid);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, sysid, compid);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, sysid, compid);
+        }
+
+        public void setCharge1(byte num,byte id)
+        {
+            mavlink_data16_t data = new mavlink_data16_t();
+            data.data = new byte[16];
+            data.type = 11;//cmd
+            data.data[0] = num;
+            data.data[1] = id;
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data);
+        }
+
+        public void setCharge_id(byte id, byte num)
+        {
+            mavlink_data16_t data = new mavlink_data16_t();
+            data.data = new byte[16];
+            data.type = 11;//cmd
+            data.data[0] = num;
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, id, MAV.compid);
+            Thread.Sleep(10);
+            generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA16, data, id, MAV.compid);
+        }
+
         public void send_data96(mavlink_data96_t data)
         {
             generatePacket((byte)(byte)MAVLINK_MSG_ID.DATA96, data);

@@ -4656,6 +4656,135 @@ namespace MissionPlanner.GCSViews
             ThemeManager.ApplyThemeTo(temp);
             temp.Show();
         }
+
+        byte up = 0, down = 0;
+        byte lockid1 = 0, lockid2 = 0;
+        private void myButton5_Click(object sender, EventArgs e)
+        {
+            if (up == 0)
+            {
+                MainV2.comPort.setCharge1(1, MainV2.comPort.MAV.sysid);//up
+            }
+            else
+            {
+                MessageBox.Show("前方占用");
+            }
+        }
+
+        private void myButton7_Click(object sender, EventArgs e)
+        {
+            if (down == 0)
+            {
+                MainV2.comPort.setCharge1(2, MainV2.comPort.MAV.sysid);//down
+            }
+            else
+            {
+                MessageBox.Show("后方占用");
+            }
+
+        }
+
+        private void myButton8_Click(object sender, EventArgs e)
+        {
+            MainV2.comPort.setCharge1(3, MainV2.comPort.MAV.sysid);//left
+        }
+
+        private void myButton9_Click(object sender, EventArgs e)
+        {
+            MainV2.comPort.setCharge1(4, MainV2.comPort.MAV.sysid);//right
+        }
+
+        private void myButton10_Click(object sender, EventArgs e)
+        {
+            MainV2.comPort.MAV.cs.a_cmd_id = 0;
+            MainV2.comPort.MAV.cs.a_cmd_dir = 0;
+
+            up = 0;
+            down = 0;
+            lockid1 = 0;
+            lockid2 = 0;
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            //check port
+            foreach (var port in MainV2.Comports)
+            {
+                //check mav
+                foreach (var MAV in port.MAVlist)
+                {
+                    if (MAV.cs.a_cmd_id > 0)
+                    {
+                        if (MAV.sysid ==2 && MAV.sysid != lockid1 && MAV.sysid != lockid2)
+                        {
+                            if (lockid1 == 0)
+                            {
+                                if (up == 0)
+                                {
+                                    up = 1;
+                                    lockid1 = 2;
+                                    port.setCharge(1, MAV.sysid, MAV.compid);//up
+                                }
+                                else if (down == 0)
+                                {
+                                    down = 1;
+                                    lockid1 = 2;
+                                    port.setCharge(2, MAV.sysid, MAV.compid);//down
+                                }
+                            }
+                            else if (lockid2 == 0)
+                            {
+                                if (up == 0)
+                                {
+                                    up = 1;
+                                    lockid2 = 2;
+                                    port.setCharge(1, MAV.sysid, MAV.compid);//up
+                                }
+                                else if (down == 0)
+                                {
+                                    down = 1;
+                                    lockid2 = 2;
+                                    port.setCharge(2, MAV.sysid, MAV.compid);//down
+                                }
+                            }
+                        }
+                        else if (MAV.sysid ==3 && MAV.sysid != lockid1 && MAV.sysid != lockid2)
+                        {
+                            if (lockid1 == 0)
+                            {
+                                if (up == 0)
+                                {
+                                    up = 1;
+                                    lockid1 = 3;
+                                    port.setCharge(1, MAV.sysid, MAV.compid);//up
+                                }
+                                else if (down == 0)
+                                {
+                                    down = 1;
+                                    lockid1 = 3;
+                                    port.setCharge(2, MAV.sysid, MAV.compid);//down
+                                }
+                            }
+                            else if (lockid2 == 0)
+                            {
+                                if (up == 0)
+                                {
+                                    up = 1;
+                                    lockid2 = 3;
+                                    port.setCharge(1, MAV.sysid, MAV.compid);//up
+                                }
+                                else if (down == 0)
+                                {
+                                    down = 1;
+                                    lockid2 = 3;
+                                    port.setCharge(2, MAV.sysid, MAV.compid);//down
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }         
     }
 }
  

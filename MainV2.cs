@@ -2712,7 +2712,40 @@ namespace MissionPlanner
                                             continue;
                                         sentmavlink1 = true;
                                     }
-
+                                    try
+                                    {
+                                        float a_yaw = 0;
+                                        double a_lat = 0, a_lng = 0;
+                                        foreach (var MAV2 in port.MAVlist)
+                                        {
+                                            if (MAV2.sysid == 1)
+                                            {
+                                                a_lat = MAV2.cs.a_lat;
+                                                a_lng = MAV2.cs.a_lng;
+                                                a_yaw = MAV2.cs.a_yaw;
+                                            }
+                                        }
+                                        MAVLink.mavlink_data32_t a_point = new MAVLink.mavlink_data32_t();
+                                        a_point.data = new byte[96];
+                                        a_point.type = 10;
+                                        a_point.len = 0;
+                                        int count = 0;
+                                        byte[] lats = System.BitConverter.GetBytes(a_lat);
+                                        byte[] lons = System.BitConverter.GetBytes(a_lng);
+                                        byte[] yaws = System.BitConverter.GetBytes(a_yaw);
+                                        a_point.data[count] = comPort.MAV.cs.a_up; count++;
+                                        a_point.data[count] = comPort.MAV.cs.a_down; count++;
+                                        a_point.data[count] = comPort.MAV.cs.a_left; count++;
+                                        a_point.data[count] = comPort.MAV.cs.a_right; count++;
+                                        Array.Copy(lats, 0, a_point.data, count, 8); count += 8;
+                                        Array.Copy(lons, 0, a_point.data, count, 8); count += 8;
+                                        Array.Copy(yaws, 0, a_point.data, count, 4); count += 4;
+                                        port.sendPacket(a_point, MAV.sysid, MAV.compid);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        log.Error(ex);
+                                    }
                                     port.sendPacket(htb, MAV.sysid, MAV.compid);
                                 }
                                 catch (Exception ex)
@@ -4054,6 +4087,11 @@ namespace MissionPlanner
         }
 
         private void MainV2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripConnectionControl_Click(object sender, EventArgs e)
         {
 
         }

@@ -120,7 +120,27 @@ namespace MissionPlanner
             }
         }
 
+        // position
+        [DisplayText("Latitude (dd)")]
+        public double a_lat { get; set; }
+        public byte a_cmd_id, a_cmd_dir,count_req;
+        public byte a_up, a_down, a_left, a_right;
 
+        [DisplayText("Longitude (dd)")]
+        public double a_lng { get; set; }
+
+        [DisplayText("Yaw (deg)")]
+        public float a_yaw
+        {
+            get => _yaw;
+            set
+            {
+                if (value < 0)
+                    _yaw = value + 360;
+                else
+                    _yaw = value;
+            }
+        }
 
         private float _groundcourse = 0;
 
@@ -2233,8 +2253,25 @@ namespace MissionPlanner
                         yaw = (float)(att.yaw*MathHelper.rad2deg);
 
                         //Console.WriteLine(MAV.sysid + " " +roll + " " + pitch + " " + yaw);
-
+                        if (mavLinkMessage.sysid == 1)
+                        {
+                            a_yaw = yaw;
+                        }
                         //MAVLink.packets[(byte)MAVLink.MSG_NAMES.ATTITUDE);
+                    }
+
+                    mavLinkMessage = MAV.getPacket((uint)MAVLink.MAVLINK_MSG_ID.DATA16);
+                    if (mavLinkMessage != null)
+                    {
+                        var data16 = mavLinkMessage.ToStructure<MAVLink.mavlink_data16_t>();
+                        if (data16.type > 1 && data16.data[0] == 1 && count_req != data16.data[1])
+                        {
+                            a_cmd_id = data16.type;
+                            count_req = data16.data[1];
+                        }else
+                        {
+                            a_cmd_id = 0;
+                        }
                     }
 
                     mavLinkMessage = MAV.getPacket((uint) MAVLink.MAVLINK_MSG_ID.GLOBAL_POSITION_INT);
@@ -2268,7 +2305,11 @@ namespace MissionPlanner
                     if (mavLinkMessage != null)
                     {
                         var gps = mavLinkMessage.ToStructure<MAVLink.mavlink_gps_raw_int_t>();
-
+                        if (mavLinkMessage.sysid == 1)
+                        {
+                            a_lat = gps.lat * 1.0e-7;
+                            a_lng = gps.lon * 1.0e-7;
+                        }
                         if (!useLocation)
                         {
                             lat = gps.lat*1.0e-7;
@@ -2573,55 +2614,55 @@ namespace MissionPlanner
                     }
 
                     //UESTC Start
-                    mavLinkMessage = MAV.getPacket((uint)MAVLink.MAVLINK_MSG_ID.DATA96);
-                    if (mavLinkMessage != null)
-                    {
-                        var data96 = mavLinkMessage.ToStructure<MAVLink.mavlink_data96_t>();
+                    //mavLinkMessage = MAV.getPacket((uint)MAVLink.MAVLINK_MSG_ID.DATA96);
+                    //if (mavLinkMessage != null)
+                    //{
+                    //    var data96 = mavLinkMessage.ToStructure<MAVLink.mavlink_data96_t>();
 
-                        int count = data96.type - 10;
-                        if (data96.type >=10 && data96.type <20)
-                        {
-                            for (int i = 0; i < 96; i++)
-                            {
-                                pips_now[i + count * 96] = data96.data[i];
-                            }
-                            f1024 = 0;
-                        }
-                        else if(data96.type == 20)
-                        {
-                            for (int i = 0; i < 64; i++)
-                            {
-                                pips_now[i + count * 96] = data96.data[i];
-                            }
+                    //    int count = data96.type - 10;
+                    //    if (data96.type >=10 && data96.type <20)
+                    //    {
+                    //        for (int i = 0; i < 96; i++)
+                    //        {
+                    //            pips_now[i + count * 96] = data96.data[i];
+                    //        }
+                    //        f1024 = 0;
+                    //    }
+                    //    else if(data96.type == 20)
+                    //    {
+                    //        for (int i = 0; i < 64; i++)
+                    //        {
+                    //            pips_now[i + count * 96] = data96.data[i];
+                    //        }
 
-                            //if (last_count != data96.data[80])
-                            //{
-                            //    last_count = data96.data[80];
-                            //    Array.Copy(pips_now, 0, pips_last, 0, 1024);
-                            //    f1024 = 1;
-                            //}
+                    //        //if (last_count != data96.data[80])
+                    //        //{
+                    //        //    last_count = data96.data[80];
+                    //        //    Array.Copy(pips_now, 0, pips_last, 0, 1024);
+                    //        //    f1024 = 1;
+                    //        //}
 
-                           Array.Copy(pips_now, 0, pips_last, 0, 1024);
-                           f1024 = 1;
-                        }
+                    //       Array.Copy(pips_now, 0, pips_last, 0, 1024);
+                    //       f1024 = 1;
+                    //    }
 
-                        if (data96.type == 1 && last_cmd_count != data96.data[80] && cmd96 ==0)
-                        {
-                            Array.Clear(cmd_callback,0,96);
-                            Array.Copy(data96.data, 0, cmd_callback, 0, data96.len);
-                            cmd96 = 1;
-                            last_cmd_count = data96.data[80];
-                        }
+                    //    if (data96.type == 1 && last_cmd_count != data96.data[80] && cmd96 ==0)
+                    //    {
+                    //        Array.Clear(cmd_callback,0,96);
+                    //        Array.Copy(data96.data, 0, cmd_callback, 0, data96.len);
+                    //        cmd96 = 1;
+                    //        last_cmd_count = data96.data[80];
+                    //    }
 
-                        if (data96.type == 2 && last_cmd_count != data96.data[80] && cmdliuliang == 0)
-                        {
-                            Array.Clear(cmd_callback, 0, 96);
-                            Array.Copy(data96.data, 0, cmd_callback, 0, data96.len);
-                            cmdliuliang = 1;
-                            last_cmd_count = data96.data[80];
-                        }
-                    }
-                    //UESTC End
+                    //    if (data96.type == 2 && last_cmd_count != data96.data[80] && cmdliuliang == 0)
+                    //    {
+                    //        Array.Clear(cmd_callback, 0, 96);
+                    //        Array.Copy(data96.data, 0, cmd_callback, 0, data96.len);
+                    //        cmdliuliang = 1;
+                    //        last_cmd_count = data96.data[80];
+                    //    }
+                    //}
+                    ////UESTC End
 
                     mavLinkMessage = MAV.getPacket((uint) MAVLink.MAVLINK_MSG_ID.SCALED_IMU);
                     if (mavLinkMessage != null)
