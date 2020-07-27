@@ -2305,7 +2305,7 @@ namespace MissionPlanner
                     if (mavLinkMessage != null)
                     {
                         var gps = mavLinkMessage.ToStructure<MAVLink.mavlink_gps_raw_int_t>();
-                        if (mavLinkMessage.sysid == 1)
+                        if (mavLinkMessage.sysid == 1 && gps.lat != 0 && gps.lon != 0)
                         {
                             a_lat = gps.lat * 1.0e-7;
                             a_lng = gps.lon * 1.0e-7;
@@ -2356,7 +2356,11 @@ namespace MissionPlanner
                         lat2 = gps.lat*1.0e-7;
                         lng2 = gps.lon*1.0e-7;
                         altasl2 = gps.alt/1000.0f;
-
+                        if (mavLinkMessage.sysid == 1 && gps.lat != 0 && gps.lon != 0)
+                        {
+                            a_lat = gps.lat * 1.0e-7;
+                            a_lng = gps.lon * 1.0e-7;
+                        }
                         gpsstatus2 = gps.fix_type;
                         gpshdop2 = (float) Math.Round((double) gps.eph/100.0, 2);
 
